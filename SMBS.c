@@ -98,7 +98,7 @@ void deleteSpecific(char key[20],struct node *x)
 		}
 	}
 }
-void Display(struct node *x)
+void traverse(struct node *x)
 {
 	struct node *p=x;
 	if(x==NULL)
@@ -112,6 +112,36 @@ void Display(struct node *x)
 		p=p->link;
 	}
 }
+void display(struct  node *l)
+{
+	int n,i,j,k=1;
+	if(l==NULL)
+	{
+		printf("\nLL is Empty");
+	}
+	for(n=0;n<=40;n++)
+	{
+		printf("-");
+	}
+	printf("\nID      Name            Price\n");
+	for(n=0;n<=40;n++)
+	{
+		printf("-");
+	}
+	while(l!=NULL)
+	{
+		j=20-(strlen(l->name));
+		printf("\n%d  ",k);
+		printf("%s",l->name);
+		for(i=0;i<j;i++)
+		{
+			printf(" ");
+		}
+		printf("%d",l->price);
+		l=l->link;
+		k++;
+	}
+}
 void main()
 {
 	int ch=0,s,k;
@@ -119,7 +149,7 @@ void main()
 	printf("\nEnter your choice");
 	do
 	{
-		printf("\n1:INSERT\n2:DELETE\n3:TRAVERSE");
+		printf("\n1:INSERT\n2:DELETE\n3:TRAVERSE\n4:DISPLAY");
 		scanf("%d",&ch);
 		switch(ch)
 		{
@@ -133,7 +163,9 @@ void main()
 				scanf("%s",&Name);
 				deleteSpecific(Name,list);
 				break;
-			case 3: Display(list);
+			case 3: traverse(list);
+				break;
+			case 4: display(list);
 				break;
 		}
 	}while(ch<4);
