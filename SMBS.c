@@ -114,22 +114,25 @@ void traverse(struct node *x)
 }
 void display(struct  node *l)
 {
-	int n,i,j,k=1;
+	int n,i,j,k=1,total=0;
+	system("cls");
 	if(l==NULL)
 	{
 		printf("\nLL is Empty");
 	}
-	for(n=0;n<=40;n++)
+
+	for(n=0;n<=30;n++)
 	{
 		printf("-");
 	}
-	printf("\nID      Name            Price\n");
-	for(n=0;n<=40;n++)
+	printf("\nID Name                Price\n");
+	for(n=0;n<=30;n++)
 	{
 		printf("-");
 	}
 	while(l!=NULL)
 	{
+	    total=total+l->price;
 		j=20-(strlen(l->name));
 		printf("\n%d  ",k);
 		printf("%s",l->name);
@@ -141,6 +144,8 @@ void display(struct  node *l)
 		l=l->link;
 		k++;
 	}
+	printf("\nTOTAL IS %d",total);
+	getch();
 }
 void main()
 {
