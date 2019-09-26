@@ -201,11 +201,23 @@ void display(struct  node *l,int totale)
             else
                 printf("-");
         }
-        for(pk = 0 ; pk < num ; pk++)
-                printf(" ");
+        printf("\n");
         if(totale==1)
         {
-            printf("\nTOTAL IS %d",total);
+            for(pk = 0 ; pk < num ; pk++)
+                printf(" ");
+            printf("|TOTAL                     |   %5d  |\n");
+            for(pk = 0 ; pk < num ; pk++)
+                printf(" ");
+            for(n=0;n<=38;n++)
+            {
+                if(n == 0 || n == 27 || n == 38)
+                {
+                    printf("+");
+                }
+                else
+                    printf("-");
+            }
         }
         else if(totale==0)
         {
@@ -320,7 +332,11 @@ void Add_cart()
 }
 void checkout()
 {
-
+    system("cls");
+    display(cart,1);
+    printf("\n\n\n\n                                        THANK YOU FOR SHOPPING WITH OUR STORE");
+    getch();
+    main_menu();
 }
 void cust_login()
 {
@@ -392,6 +408,8 @@ void main_menu()
             case 1 : login();
             break;
             case 2 : cust_login();
+            break;
+            case 3 : exit(0);
             break;
         }
     }while(ch<3);
