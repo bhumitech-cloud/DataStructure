@@ -39,7 +39,17 @@ void insertEnd(int x,char y[20],struct node *z)
 void deleteSpecific(char key[20],struct node *x)
 {
 	int n;
-	struct node *p=list,*q=list;
+	struct node *p,*q;
+	if(x==list)
+	{
+		p=list;
+		q=list;
+	}
+	else
+	{
+		p=cart;
+		q=cart;
+	}
 	if(x==NULL)
 	{
 		printf("\nLL is empty");
