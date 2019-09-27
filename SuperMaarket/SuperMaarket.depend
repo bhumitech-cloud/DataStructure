@@ -1,5 +1,6 @@
 # depslib dependency file v1.0
-1569505185 source:c:\users\acer\desktop\supermarket billing system\supermaarket\main.c
+1569586825 source:c:\users\acer\desktop\supermarket billing system\supermaarket\main.c
 	<stdio.h>
 	<stdlib.h>
+	<string.h>
 

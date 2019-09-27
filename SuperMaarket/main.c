@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #define password 1337
 
+int totalee=0;
 struct node
 {
 	char name[20];
@@ -111,6 +113,15 @@ void deleteSpecific(char key[20],struct node *x)
 		}
 	}
 }
+void insert_list()
+{
+    char name[20];
+    strcpy(name,"chips");
+    insertEnd(20,name,list);
+    strcpy(name,"cold drinks");
+    insertEnd(30,name,list);
+
+}
 void traverse(struct node *x)
 {
 	struct node *p=x;
@@ -127,7 +138,7 @@ void traverse(struct node *x)
 }
 void display(struct  node *l,int totale)
 {
-	int n,i,j,pk,k=0,total=0;
+	int n,i,j,pk,k=0;
 	system("cls");
 	if(l==NULL)
 	{
@@ -169,15 +180,13 @@ void display(struct  node *l,int totale)
             else
                 printf("-");
         }
+        totalee=0;
         printf("\n");
-        //for(int pk = 0 ; pk < num ; pk++)
-        //        printf(" ");
         do
         {
+            totalee=totalee+(l->price);
             for(pk = 0 ; pk < num ; pk++)
                 printf(" ");
-            total=total+l->price;
-            //k = 999;
             j=20-(strlen(l->name));
             printf("|%3d  |",k);
             printf("  %s",l->name);
@@ -206,7 +215,7 @@ void display(struct  node *l,int totale)
         {
             for(pk = 0 ; pk < num ; pk++)
                 printf(" ");
-            printf("|TOTAL                     |   %5d  |\n");
+            printf("|TOTAL                     |   %5d  |\n",totalee);
             for(pk = 0 ; pk < num ; pk++)
                 printf(" ");
             for(n=0;n<=38;n++)
@@ -418,6 +427,7 @@ void main_menu()
 int main()
 {
     system("color f0");
+    insert_list();
     main_menu();
     return 0;
 }
