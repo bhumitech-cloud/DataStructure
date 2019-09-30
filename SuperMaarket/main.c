@@ -2,14 +2,17 @@
 #include <stdlib.h>
 #include <string.h>
 #define password 1337
-
+#define SPACE "/t/t/t/t/t"
 int totalee=0;
+//node created
 struct node
 {
 	char name[20];
 	int price;
 	struct node *link;
 }*list=NULL,*cart=NULL;
+
+//insertend function for linked list
 void insertEnd(int x,char y[20],struct node *z)
 {
 	struct node *n,*p;
@@ -38,6 +41,8 @@ void insertEnd(int x,char y[20],struct node *z)
 		p->link=n;
 	}
 }
+
+//delete function for linked list
 void deleteSpecific(char key[20],struct node *x)
 {
 	int n;
@@ -113,131 +118,204 @@ void deleteSpecific(char key[20],struct node *x)
 		}
 	}
 }
+
+//sample list generated
 void insert_list()
 {
     char name[20];
-    strcpy(name,"chips");
+    strcpy(name,"Lays_chips");
     insertEnd(20,name,list);
-    strcpy(name,"cold drinks");
+    strcpy(name,"Pepsi");
+    insertEnd(45,name,list);
+    strcpy(name,"Santoor_soap");
     insertEnd(30,name,list);
+    strcpy(name,"Dettol_handwash");
+    insertEnd(50,name,list);
+    strcpy(name,"Cheese");
+    insertEnd(100,name,list);
+    strcpy(name,"T-shirt");
+    insertEnd(500,name,list);
+    strcpy(name,"Watch");
+    insertEnd(1000,name,list);
+    strcpy(name,"frozen food");
+    insertEnd(200,name,list);
+    strcpy(name,"Ice cream");
+    insertEnd(100,name,list);
+    strcpy(name,"pendrive");
+    insertEnd(500,name,list);
 
 }
-void traverse(struct node *x)
-{
-	struct node *p=x;
-	if(x==NULL)
-	{
-		printf("\n LL is Empty");
-	}
 
-	while(p!=NULL)
+//traverse linked list by id to delete items from list
+void deleteid(int id,struct node *n)
+{
+    struct node *p=n;
+    int i;
+    for(i=0;i<id;i++)
+    {
+
+        p=p->link;
+		if(p == NULL)
+		{
+			printf("\n\n\n\n\n\n                                    ID not found");
+			return;
+		}
+    }
+    deleteSpecific(p->name,n);
+    printf("\n\n\n\n\n\n                                    Item deleted!");
+}
+
+void printLine()
+{
+	int n;
+	nextline(1);
+	space(40);
+	for(n=0;n<=38;n++)
 	{
-		printf("\n%s   %d",p->name,p->price);
-		p=p->link;
+		if(n == 0 || n == 6 || n == 27 || n == 38)
+		{
+			printf("+");
+		}
+		else
+			printf("-");
 	}
 }
-void display(struct  node *l,int totale)
+
+void displayList(struct  node *l)
 {
-	int n,i,j,pk,k=0;
+	int i=0,j,k;
 	system("cls");
+	nextline(2);
+	space(55);
+    printf("VB SUPERMARKET");
+    nextline(1);
 	if(l==NULL)
 	{
-		printf("\n\n\n\n\n\n\n\n\n\n\n\n\n\n                                               NO STOCKS AVAILABLE");
+
+		printf(SPACE "EMPTY");
 		printf("\n\n\n\n\n\n\n\n\n\n                                             Enter any key to return");
 	}
-	else
-    {
-        printf("\n");
-        int num = 40;
-        for(pk = 0 ; pk < num ; pk++)
-        {
-                printf(" ");
+    else
+	{
+		printLine();
+		nextline(1);
+		space(40);
+		printf("| ID  |        Name        |  Price   |");
+		printLine();
+		while(l!=NULL)
+		{
+			nextline(1);
+			space(40);
+			printf("|%3d  |  %s",i,l->name);
+			space(18-(strlen(l->name)));
+			printf("|  %6d  |",l->price);
+			l=l->link;
+			i++;
 		}
-        for(n=0;n<=38;n++)
-        {
-            if(n == 0 || n == 6 || n == 27 || n == 38)
-            {
-                printf("+");
-            }
-            else
-                printf("-");
-        }
-        printf("\n");
-        for(pk = 0 ; pk < num ; pk++)
-        {
-                printf(" ");
-    	}
-        printf("| ID  |        Name        |  Price   |\n");
-      //  printf("\n              ");
-        for(pk = 0 ; pk < num ; pk++)
-                printf(" ");
-        for(n=0;n<=38;n++)
-        {
-            if(n == 0 || n == 6 || n == 27 || n == 38)
-            {
-                printf("+");
-            }
-            else
-                printf("-");
-        }
-        totalee=0;
-        printf("\n");
-        do
-        {
-            totalee=totalee+(l->price);
-            for(pk = 0 ; pk < num ; pk++)
-                printf(" ");
-            j=20-(strlen(l->name));
-            printf("|%3d  |",k);
-            printf("  %s",l->name);
-            for(i=0;i<j-2;i++)
-            {
-                printf(" ");
-            }
-            printf("|  %6d  |\n",l->price);
-            l=l->link;
-            k++;
-        }while(l!=NULL);
-        //printf("\n");
-        for(pk = 0 ; pk < num ; pk++)
-                printf(" ");
-        for(n=0;n<=38;n++)
-        {
-            if(n == 0 || n == 6 || n == 27 || n == 38)
-            {
-                printf("+");
-            }
-            else
-                printf("-");
-        }
-        printf("\n");
-        if(totale==1)
-        {
-            for(pk = 0 ; pk < num ; pk++)
-                printf(" ");
-            printf("|TOTAL                     |   %5d  |\n",totalee);
-            for(pk = 0 ; pk < num ; pk++)
-                printf(" ");
-            for(n=0;n<=38;n++)
-            {
-                if(n == 0 || n == 27 || n == 38)
-                {
-                    printf("+");
-                }
-                else
-                    printf("-");
-            }
-        }
-        else if(totale==0)
-        {
-            printf("                                         Enter Any key");
-            getch();
-        }
-    }
+		printLine();
+	}
 }
+
+
+void displayCart(struct  node *l)
+{
+	int i=0,j;
+	float k=0;
+	system("cls");
+	nextline(2);
+	space(53);
+    printf("VB SUPERMARKET");
+    nextline(1);
+	if(l==NULL)
+	{
+	    nextline(5);
+        space(55);
+		printf("CART IS EMPTY!");
+		return;
+	}
+    else
+	{
+		printLine();
+		nextline(1);
+		space(40);
+		printf("| ID  |        Name        |  Price   |");
+		printLine();
+		while(l!=NULL)
+		{
+			nextline(1);
+			space(40);
+			printf("|%3d  |  %s",i,l->name);
+			space(18-(strlen(l->name)));
+			printf("|  %6d  |",l->price);
+			k=k+l->price;
+			l=l->link;
+			i++;
+		}
+		printLine();
+		nextline(1);
+		space(40);
+		printf("| TOTAL                    | %7.2f  |",k);
+		printLine();
+	}
+}
+//display function for linked list in tabular form
+void displayCheckout(struct node *l)
+{
+	int i=0,j;
+	float k=0,gst;
+	system("cls");
+	nextline(2);
+	space(52);
+    printf("VB SUPERMARKET");
+    nextline(1);
+	if(l==NULL)
+	{
+	    nextline(5);
+        space(55);
+		printf("CART IS EMPTY!");
+		return;
+	}
+    else
+	{
+		printLine();
+		nextline(1);
+		space(40);
+		printf("| ID  |        Name        |  Price   |");
+		printLine();
+		while(l!=NULL)
+		{
+			nextline(1);
+			space(40);
+			printf("|%3d  |  %s",i,l->name);
+			space(18-(strlen(l->name)));
+			printf("|  %6d  |",l->price);
+			k=k+l->price;
+			l=l->link;
+			i++;
+		}
+		printLine();
+		nextline(1);
+		space(40);
+		printf("| Sub Total                | %7.2f  |",k);
+		printLine();
+		gst=(k*2.5)/100;
+		nextline(1);
+		space(40);
+		printf("| CGST                 2.5%%| %7.2f  |",gst);
+		nextline(1);
+		space(40);
+		printf("| SGST                 2.5%%| %7.2f  |",gst);
+		printLine();
+		nextline(1);
+		space(40);
+		printf("| TOTAL                    | %7.2f  |",k+(2*gst));
+		printLine();
+	}
+}
+//admin page gui
 void admin_menu()
 {
-    int i,ch,pric;
+    int i,id,ch,pric;
     char name[20],condition;
     do{
         system("cls");
@@ -256,7 +334,8 @@ void admin_menu()
         scanf("%d",&ch);
         switch(ch)
         {
-            case 1 : display(list,0);
+            case 1 : displayList(list);
+                     getch();
             break;
             case 2 : do{
                         system("cls");
@@ -271,17 +350,19 @@ void admin_menu()
                     }while(condition!= 'n');
                     break;
             case 3 : system("cls");
-                    printf("\n\n\n\n\n\n\n\n                                Enter  the name of Item:");
-                    scanf("%s",name);
-                    deleteSpecific(name,list);
+                    displayList(list);
+                    printf("\n\n\n\n                                Enter  Item ID:");
+                    scanf("%d",&id);
+                    deleteid(id,list);
                     nextline(5);
                     space(15);
-                    printf("Press Any Key");
                     getch();
                     break;
         }
     }while(ch<4);
 }
+
+//code for newline
 void nextline(int x)
 {
 	int i;
@@ -290,12 +371,16 @@ void nextline(int x)
         printf("\n");
 	}
 }
+
+//code for aesthetic spacing
 void space(int x)
 {
 	int i;
     for(i = 0 ; i < x ; i++)
             printf(" ");
 }
+
+//code for admin login gui
 void login()
 {
     int pass;
@@ -312,6 +397,8 @@ void login()
         getch();
     }
 }
+
+//function to take id and insert in cart
 void insertProduct(int key)
 {
     int i,pric;
@@ -320,18 +407,25 @@ void insertProduct(int key)
     for(i=0;i<key;i++)
     {
         p=p->link;
+		if(p == NULL)
+		{
+			printf("\n\n\n\n\n\n                              ID not found");
+			return;
+		}
     }
     pric=p->price;
     strcpy(name,p->name);
     insertEnd(pric,name,cart);
 }
+
+//loop for adding multiple elements in cart
 void Add_cart()
 {
     int product;
     char ch;
     do{
         system("cls");
-        display(list,69);
+        displayList(list);
         printf("\n                                        Enter the product ID:");
         scanf("%d",&product);
         insertProduct(product);
@@ -339,17 +433,21 @@ void Add_cart()
         ch=getch();
     }while(ch != 'n');
 }
+
+//bill gui code
 void checkout()
 {
     system("cls");
-    display(cart,1);
+    displayCheckout(cart);
     printf("\n\n\n\n                                        THANK YOU FOR SHOPPING WITH OUR STORE");
     getch();
     main_menu();
 }
+
+//customer login gui
 void cust_login()
 {
-    int i,ch,c;
+    int i,id,ch,c;
     char name[20];
     do{
         system("cls");
@@ -368,13 +466,13 @@ void cust_login()
         scanf("%d",&ch);
         switch(ch)
         {
-            case 1 : display(list,69);
+            case 1 : displayList(list);
                     printf("\n\n\n\n         1--->Add to cart   \n\n         2--->back");
                     scanf("%d",&c);
                     if(c== 1)
                         Add_cart();
                     break;
-            case 2 : display(cart,1);
+            case 2 : displayCart(cart);
             		printf("\n\n\n\n         1--->Checkout      \n\n         2--->delete Item \n\n         3-->back");
                     scanf("%d",&c);
                     if(c== 1)
@@ -382,24 +480,28 @@ void cust_login()
                     else if(c==2)
                     {
                     	system("cls");
-						printf("\n\n\n\n\n\n\n\n                                Enter  the name of Item:");
-         	           	scanf("%s",name);
-            	        deleteSpecific(name,cart);
-                	    nextline(5);
-                    	space(15);
-                    	printf("Item Deleted");
-						getch();
+                        displayList(cart);
+                        printf("\n\n\n\n                                Enter  Item ID:");
+                        scanf("%d",&id);
+                        deleteid(id,cart);
+                        nextline(5);
+                        space(15);
+                        getch();
+                        break;
 					}
                     break;
         }
     }while(ch<3);
 }
+
+//main homepage gui
 void main_menu()
 {
     int i,ch;
     do{
         system("cls");
-        printf("\n\n\n\n\n\n         ");
+        printf("\n\n\n\t\t\t\t\t\t  VB SUPERMARKET");
+        printf("\n\n\n\n         ");
         for(i=0;i<100;i++)
         {
             printf("=");
