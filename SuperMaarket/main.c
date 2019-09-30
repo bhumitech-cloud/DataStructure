@@ -146,6 +146,20 @@ void insert_list()
 
 }
 
+int count(struct node *p)
+{
+    int i;
+	if(p==NULL)
+		return(0);
+	else
+	{
+		for(i=0;p!=NULL;i++)
+		{
+			p=p->link;
+		}
+		return(i);
+	}
+}
 //traverse linked list by id to delete items from list
 void deleteid(int id,struct node *n)
 {
@@ -456,7 +470,7 @@ void cust_login()
         {
             printf("=");
         }
-        printf("\n\n\n\n         1--->View Products   \n\n         2--->View Cart \n\n         3--->Logout");
+        printf("\n\n\n\n         1--->View Products   \n\n         2--->View Cart(%d) \n\n         3--->Logout",count(cart));
         printf("\n\n\n\n         ");
         for(i=0;i<100;i++)
         {
