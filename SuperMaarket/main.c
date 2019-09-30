@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #define password 1337
-#define SPACE "/t/t/t/t/t"
-int totalee=0;
+
 //node created
 struct node
 {
