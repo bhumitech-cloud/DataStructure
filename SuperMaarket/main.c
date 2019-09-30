@@ -204,8 +204,8 @@ void displayList(struct  node *l)
     nextline(1);
 	if(l==NULL)
 	{
-
-		printf(SPACE "EMPTY");
+        nextline(4);space(40);
+		printf("EMPTY");
 		printf("\n\n\n\n\n\n\n\n\n\n                                             Enter any key to return");
 	}
     else
